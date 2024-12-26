@@ -1,0 +1,10 @@
+.logo {
+  width: 7.87rem;
+  height: 4, 5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
