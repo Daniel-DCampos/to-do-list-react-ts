@@ -1,0 +1,69 @@
+.container {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statusTasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 29rem;
+  border-bottom: 1px solid var(--gray-400);
+  padding-bottom: 2rem;
+  width: 736px;
+  align-self: center;
+}
+
+.tasksCreated {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tasksCreated span {
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.badgeStatusTasks {
+  background: var(--gray-400);
+  color: var(--gray-200);
+  font-weight: bold;
+  border-radius: 15px;
+  width: 25px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+}
+
+.tasksCompleted span {
+  font-weight: bold;
+  color: var(--purple);
+}
+
+.tasksCompleted {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tasks {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+}
+
+.tasks > span {
+  margin-top: 1rem;
+}
+.tasks span p {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.tasks span p:first-child {
+  font-weight: bold;
+}

@@ -1,11 +1,9 @@
-.main {
-  display: flex;
-  justify-content: center;
-}
-
 .form {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
   gap: 1rem;
   margin-top: 4.5rem;
 }
