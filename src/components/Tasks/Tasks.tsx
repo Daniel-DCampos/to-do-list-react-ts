@@ -1,10 +1,19 @@
-import { useState } from "react";
 import s from "./Tasks.module.css";
 import { ClipboardText } from "@phosphor-icons/react";
 import { Task } from "../Task/Task";
 
-export function Tasks() {
-  const [isTaskCreated, setIsTaskCreated] = useState(false);
+interface Props {
+  tasks: TaskProps[];
+  onDeleteTask: (id: string) => void;
+}
+
+export interface TaskProps {
+  id: string;
+  content: string;
+}
+
+export function Tasks({ tasks, onDeleteTask }: Props) {
+  const taskIsEmpty = tasks.length <= 0;
 
   return (
     <div className={s.container}>
@@ -21,7 +30,7 @@ export function Tasks() {
       </div>
 
       <div className={s.tasks}>
-        {isTaskCreated ? (
+        {taskIsEmpty ? (
           <>
             <ClipboardText size={56} />
             <span>
@@ -30,7 +39,7 @@ export function Tasks() {
             </span>
           </>
         ) : (
-          <Task />
+          tasks.map((task) => <Task onDeleteTask={onDeleteTask} Task={task} key={task.id}/>)
         )}
       </div>
     </div>

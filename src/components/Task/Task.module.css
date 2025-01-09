@@ -11,6 +11,14 @@
   gap: 1rem;
 }
 
+.task + .task{
+  margin-top: 1rem;
+}
+
+.content{
+  width: 37rem;
+}
+
 .checkbox {
   position: relative;
   overflow: hidden;
