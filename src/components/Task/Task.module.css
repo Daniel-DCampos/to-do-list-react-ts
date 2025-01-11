@@ -16,12 +16,19 @@
 }
 
 .content{
+  width: 100%;
+}
+
+.contentCompleted{
   width: 37rem;
+  text-decoration: line-through;
+  color: var(--gray-300);
 }
 
 .checkbox {
   position: relative;
   overflow: hidden;
+  width: 1.7rem;
 }
 
 .checkboxInput {

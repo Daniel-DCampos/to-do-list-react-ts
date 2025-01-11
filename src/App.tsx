@@ -10,6 +10,20 @@ import { v4 as uuidv4 } from "uuid";
 export default function App() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [taskText, setNewTaskText] = useState("");
+  const [numberTasksCreated, setNumberTasksCreated] = useState<number>(0);
+  const [numberTasksCompleted, setNumberTasksCompleted] = useState<number>(0);
+
+  function handleNumberTasksCreated(deleted: boolean) {
+    setNumberTasksCreated((state) => {
+      return deleted ? state - 1 : state + 1;
+    });
+  }
+
+  function handleNumberTasksCompleted(IsCompleted: boolean) {
+    setNumberTasksCompleted((state) => {
+      return IsCompleted ? state + 1 : state - 1;
+    });
+  }
 
   function deleteTask(id: string) {
     const tasksWithoutDeleted = tasks?.filter((task) => {
@@ -25,13 +39,25 @@ export default function App() {
     const newTask: TaskProps = {
       id: uuidv4(),
       content: taskText,
+      isTaskCompleted: false,
     };
-
-    console.log(newTask);
 
     setTasks([...tasks, newTask]);
 
     setNewTaskText("");
+
+    handleNumberTasksCreated(false);
+  }
+
+  function handleTaskState(id: string, checked: boolean) {
+    const tasksWithModifiedBasedOnId = tasks.map((task) => {
+      if (task.id === id) {
+        task.isTaskCompleted = checked;
+      }
+      return task;
+    });
+
+    setTasks(tasksWithModifiedBasedOnId);
   }
 
   function handleNewTaskTextChange(event: ChangeEvent<HTMLInputElement>) {
@@ -54,7 +80,15 @@ export default function App() {
           </button>
         </div>
 
-        <Tasks tasks={tasks} onDeleteTask={deleteTask} />
+        <Tasks
+          tasks={tasks}
+          onDeleteTask={deleteTask}
+          onTaskState={handleTaskState}
+          numberTasksCompleted={numberTasksCompleted}
+          numberTasksCreated={numberTasksCreated}
+          onNumberTaskCreated={handleNumberTasksCreated}
+          onNumberTaskCompleted={handleNumberTasksCompleted}
+        />
       </main>
     </div>
   );
